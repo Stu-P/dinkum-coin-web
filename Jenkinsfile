@@ -1,7 +1,12 @@
 def buildVersion = ''
 
 pipeline {
-	agent { label 'nodejs' }
+	agent {         
+        docker {
+            image 'node:6-alpine'
+            args '-p 3000:3000'
+        } 
+    }
 
 	options { skipDefaultCheckout() }
 	
@@ -11,23 +16,17 @@ pipeline {
 		}
 
 	stages {
-		stage("Package Restore") {
+		stage("Build") {
 			 
 			steps {
-				deleteDir()
-				checkout scm
 
 				sh 'npm install'
 
-				stash name: "solution", useDefaultExcludes: false
-			}
+    		}
 		}
 	stage("Test") {
 
 			steps {
-				deleteDir()
-				unstash "solution"
-
 				sh 'npm test'
 			}
 		}
@@ -36,8 +35,6 @@ pipeline {
 
 
 			steps {
-				deleteDir()
-				unstash "solution"
 				sh 'npm run build'
 	
 			}
