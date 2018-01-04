@@ -13,7 +13,7 @@ pipeline {
 
         environment { 
 			CI='TRUE'
-			HOME='/var/lib/jenkins/'
+			HOME='.'
 			
 		}
 
