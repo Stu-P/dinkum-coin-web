@@ -20,14 +20,14 @@ pipeline {
 			 
 			steps {
 
-				sh 'sudo npm install'
+				sh 'npm install'
 
     		}
 		}
 	stage("Test") {
 
 			steps {
-				sh 'sudo npm test'
+				sh 'npm test'
 			}
 		}
 	stage("Package") {
@@ -35,7 +35,7 @@ pipeline {
 
 
 			steps {
-				sh 'sudo npm run build'
+				sh 'npm run build'
 	
 			}
 		}
