@@ -13,7 +13,7 @@ pipeline {
 
         environment { 
 			CI='TRUE'
-			HOME='.'
+		//	HOME='.'
 			
 		}
 
@@ -23,6 +23,7 @@ pipeline {
 			steps {
 				sh 'pwd'
 				sh 'ls -al'
+				sh 'printenv'
 
 				//sh 'npm install'
 
