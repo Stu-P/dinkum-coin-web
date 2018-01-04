@@ -22,10 +22,6 @@ pipeline {
 			 
 			steps {
 				checkout scm
-				sh 'pwd'
-				sh 'ls -al'
-				sh 'printenv'
-				sh 'node --version'
 				sh 'npm install'
 
     		}
@@ -34,7 +30,6 @@ pipeline {
 
 			steps {
 				sh 'npm test'
-				echo 'Test'
 			}
 		}
 	stage("Package") {
@@ -43,7 +38,6 @@ pipeline {
 
 			steps {
 				sh 'npm run build'
-				echo 'Package'
 			}
 		}
 	}
