@@ -12,7 +12,7 @@ pipeline {
 	
 
         environment { 
-			CI=TRUE
+			CI="TRUE"
 		}
 
 	stages {
