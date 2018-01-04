@@ -13,7 +13,7 @@ pipeline {
 
         environment { 
 			CI='TRUE'
-		//	HOME='.'
+			HOME='/home/jenkins'
 			
 		}
 
@@ -24,8 +24,8 @@ pipeline {
 				sh 'pwd'
 				sh 'ls -al'
 				sh 'printenv'
-
-				//sh 'npm install'
+				echo '$USER'
+				sh 'npm install'
 
     		}
 		}
