@@ -12,7 +12,7 @@ pipeline {
 	
 
         environment { 
-			CI="TRUE"
+			CI='TRUE'
 		}
 
 	stages {
@@ -20,14 +20,14 @@ pipeline {
 			 
 			steps {
 
-				sh 'npm install'
+				sh 'sudo npm install'
 
     		}
 		}
 	stage("Test") {
 
 			steps {
-				sh 'npm test'
+				sh 'sudo npm test'
 			}
 		}
 	stage("Package") {
@@ -35,7 +35,7 @@ pipeline {
 
 
 			steps {
-				sh 'npm run build'
+				sh 'sudo npm run build'
 	
 			}
 		}
