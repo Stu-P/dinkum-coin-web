@@ -13,6 +13,7 @@ pipeline {
 
         environment { 
 			CI='TRUE'
+			HOME='.'
 		}
 
 	stages {
