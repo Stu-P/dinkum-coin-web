@@ -13,7 +13,8 @@ pipeline {
 
         environment { 
 			CI='TRUE'
-			HOME='.'
+			HOME='/var/lib/jenkins/'
+			
 		}
 
 	stages {
