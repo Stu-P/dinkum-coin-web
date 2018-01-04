@@ -21,15 +21,18 @@ pipeline {
 		stage("Build") {
 			 
 			steps {
+				sh 'pwd'
+				sh 'ls -al'
 
-				sh 'npm install'
+				//sh 'npm install'
 
     		}
 		}
 	stage("Test") {
 
 			steps {
-				sh 'npm test'
+				//sh 'npm test'
+				echo 'Test'
 			}
 		}
 	stage("Package") {
@@ -37,8 +40,8 @@ pipeline {
 
 
 			steps {
-				sh 'npm run build'
-	
+				//sh 'npm run build'
+				echo 'Package'
 			}
 		}
 	}
