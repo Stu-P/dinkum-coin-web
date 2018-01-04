@@ -13,7 +13,7 @@ pipeline {
 
         environment { 
 			CI='TRUE'
-			HOME='/home/jenkins'
+			HOME='.'
 			
 		}
 
@@ -33,7 +33,7 @@ pipeline {
 	stage("Test") {
 
 			steps {
-				//sh 'npm test'
+				sh 'npm test'
 				echo 'Test'
 			}
 		}
@@ -42,7 +42,7 @@ pipeline {
 
 
 			steps {
-				//sh 'npm run build'
+				sh 'npm run build'
 				echo 'Package'
 			}
 		}
