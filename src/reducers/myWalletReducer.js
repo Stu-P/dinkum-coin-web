@@ -1,6 +1,6 @@
 const initialState = {
   loading: false,
-  walletSelected: true
+  walletSelected: false
 
 }
 

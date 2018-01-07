@@ -1,4 +1,4 @@
-import Environment from '../utils'
+import {Environment} from '../utils'
 import fetch from 'isomorphic-fetch';
 import StatusCodes from 'constants'
 
@@ -46,7 +46,6 @@ function parseResponse(data) {
     let options = {
       method: method,
       headers: {
-        'Accept': 'application/json',
         'Content-Type': 'application/json; charset=utf-8',
       },
       body: method !== 'GET' ? JSON.stringify(body) : undefined

@@ -12,7 +12,16 @@ class ChooseWallet extends React.Component {
     this.isLoading = this.isLoading.bind(this)
     this.Spinner = this.Spinner.bind(this)
     this.WalletComboBox = this.WalletComboBox.bind(this)
+console.log('created choosewallet component')
+this.props.actions.getWallets()
+    console.log('after called getWallets')
+
   }
+
+  isLoaded() {
+    return this.props.chooseWalletState.loaded
+  }
+
 
   isLoading() {
     return this.props.chooseWalletState.loading
@@ -22,8 +31,8 @@ class ChooseWallet extends React.Component {
     return <div className={classnames('get-started', 'loading')}></div>
   }
 
-  WalletComboBox() {
-    return (
+  WalletComboBox() { return ( this.isLoading() ? this.Spinner() :
+    
       <div>
           <p className="App-intro">
           To get started, select your wallet below
@@ -39,7 +48,7 @@ class ChooseWallet extends React.Component {
 
   render() {
     return (
-      this.isLoading() ? this.Spinner() : this.WalletComboBox()
+      this.isLoaded() ? this.WalletComboBox() : <div></div>
     );
   }
 }
