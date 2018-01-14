@@ -32,9 +32,8 @@ pipeline {
 				sh 'npm test'
 			}
 		}
+
 	stage("Package") {
-
-
 
 			steps {
 				sh 'npm run build'

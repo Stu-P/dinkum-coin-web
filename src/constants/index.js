@@ -1,1 +1,1 @@
-export StatusCodes from './StatusCodes'
+export StatusCodes from './statusCodes'

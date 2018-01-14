@@ -3,7 +3,13 @@ import '../styles/ChooseWallet.css'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as chooseWalletActions from '../actions/chooseWalletActions'
+import * as myWalletActions from '../actions/myWalletActions'
+
 import classnames from 'classnames'
+
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
+
 
 
 class ChooseWallet extends React.Component {
@@ -12,11 +18,19 @@ class ChooseWallet extends React.Component {
     this.isLoading = this.isLoading.bind(this)
     this.Spinner = this.Spinner.bind(this)
     this.WalletComboBox = this.WalletComboBox.bind(this)
-console.log('created choosewallet component')
-this.props.actions.getWallets()
-    console.log('after called getWallets')
+
+    this.props.actions.getWallets()
+
 
   }
+
+
+  onWalletSelect = (selected) => {
+    console.log(`wallet selected ${JSON.stringify(selected)}`)
+    this.props.actions.getWalletById(selected.value)
+
+  }
+
 
   isLoaded() {
     return this.props.chooseWalletState.loaded
@@ -37,11 +51,8 @@ this.props.actions.getWallets()
           <p className="App-intro">
           To get started, select your wallet below
         </p>
-        <select >
-        <option value="" disabled selected hidden>Choose...</option>
-        <option value="stu">Stu</option>
-        <option value="indie">Indie</option>
-      </select>
+        <Select name="walletSelect" options={this.props.chooseWalletState.wallets} allowCreate={false} clearable={false}
+        onChange={this.onWalletSelect} placeholder='Please choose...' noResultsText='No wallets' />
       </div>
     )
   }
@@ -58,6 +69,6 @@ export default connect(
     chooseWalletState: state.chooseWalletReducer
   }),
   dispatch => ({
-    actions: bindActionCreators(chooseWalletActions, dispatch)
+    actions: bindActionCreators({...chooseWalletActions , ...myWalletActions }, dispatch)
   })
 )(ChooseWallet)

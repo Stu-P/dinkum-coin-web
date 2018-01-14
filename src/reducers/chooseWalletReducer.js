@@ -1,7 +1,7 @@
   const initialState = {
     loading: false,
     loaded: false,
-    wallets:{}
+    wallets:[]
   }
   
   const chooseWalletReducer = (state = initialState, action) => {
@@ -16,7 +16,8 @@
         return Object.assign({}, state, {
           loading: false,
           loaded: true,
-          wallets: action.response
+       //   wallets: action.response
+          wallets: Object.keys(action.response).map(value => ({label: action.response[value], value: value}))
         })
   
       default:

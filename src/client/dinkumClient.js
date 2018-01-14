@@ -1,6 +1,7 @@
-import {Environment} from '../utils'
+import Environment from '../utils/Environment'
 import fetch from 'isomorphic-fetch';
-import StatusCodes from 'constants'
+import StatusCodes from '../constants/statusCodes'
+
 
 
 const GET_WALLETS_RESOURCE = "api/wallets"
@@ -22,6 +23,7 @@ function parseResponse(data) {
   }
 
   function checkStatus(response) {
+    console.log(StatusCodes)
     if (response.status >= StatusCodes.OK && response.status < StatusCodes.MULTIPLE_CHOICES) { //"OK" RESPONSE
       return response
     } else {
@@ -46,7 +48,7 @@ function parseResponse(data) {
     let options = {
       method: method,
       headers: {
-        'Content-Type': 'application/json; charset=utf-8',
+        'Accept': 'application/json',
       },
       body: method !== 'GET' ? JSON.stringify(body) : undefined
     }
@@ -59,6 +61,7 @@ function parseResponse(data) {
   }
   
   export function GetAllWallets(baseUrl) {
+    console.log(Environment)
     let url=""
     if(!baseUrl){
      url = `${Environment.DinkumApiEndPoint}/${GET_WALLETS_RESOURCE}`
@@ -69,4 +72,21 @@ function parseResponse(data) {
 console.log(url);
     return executeRequest(url, "GET")
   }
+  
+  export function GetWalletById(walletId,baseUrl) {
+    console.log(Environment)
+    let url=""
+    if(!baseUrl){
+     url = `${Environment.DinkumApiEndPoint}/api/wallets/${walletId}`
+    }
+    else {
+       url = `${baseUrl}/api/wallets/${walletId}`
+    }
+console.log(url);
+    return executeRequest(url, "GET")
+  }
+  
+
+
+
   

@@ -1,7 +1,7 @@
 const path = require('path')
 
 const Pact = require("@pact-foundation/pact").Pact;
-const dinkumClient = require('../src/client/dinkumClient')
+const dinkumClient = require('../client/dinkumClient')
 
 describe("Dinkum Coin API", () => {
     let url = 'http://localhost'
@@ -64,10 +64,12 @@ describe("Dinkum Coin API", () => {
       // add expectations
       it('returns a sucessful body', done => {
         return dinkumClient.GetAllWallets("http://localhost:8989")
+
           .then(response => {
-            expect(response.headers['content-type']).toEqual('application/json')
-            expect(response.data).toEqual(EXPECTED_BODY)
-            expect(response.status).toEqual(200)
+            console.log(response)
+            // expect(response.Result.headers['Content-Type']).toEqual('application/json')
+            expect(response).toEqual(EXPECTED_BODY)
+           // expect(response.Result.status).toEqual(200)
             done()
           })
       })

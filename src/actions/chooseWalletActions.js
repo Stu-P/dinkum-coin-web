@@ -1,6 +1,5 @@
 import * as dinkumClient from '../client/dinkumClient'
 
-
 export const walletsReceived = response => ({
     type: 'WALLETS_RECEIVED',
     response
@@ -10,9 +9,13 @@ export const walletsReceived = response => ({
   {
     type: 'WALLETS_SHOW_LOADING'
   })
+
+  // export const walletSelected = (selected) => (
+  //   {
+  //     walletActions.getWalletById(selected);
+  //   })
   
   export const getWallets = () => async dispatch => {
-    console.log('getWallets action called')
 
     dispatch(loadingWallets())
     try {
