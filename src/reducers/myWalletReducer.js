@@ -20,6 +20,19 @@ const myWalletReducer = (state = initialState, action) => {
         selectedWallet: action.response
       })
 
+      case 'STARTED_MINE_COIN':
+      return Object.assign({}, state, {
+        loading: true,
+        loaded: false
+      })
+
+      case 'RECEIVED_MINE_COIN_RESULT':
+      return Object.assign({}, state, {
+        loading: false,
+        loaded: true,
+        selectedWallet: action.response
+      })
+
     default:
       return Object.assign({}, state, initialState)
     }

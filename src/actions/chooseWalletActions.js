@@ -19,7 +19,7 @@ export const walletsReceived = response => ({
 
     dispatch(loadingWallets())
     try {
-      const response = await dinkumClient.GetAllWallets("https://8lyhztzwh3.execute-api.ap-southeast-2.amazonaws.com/Dev");
+      const response = await dinkumClient.GetAllWallets();
       dispatch(walletsReceived(response))
     } catch(e) {
       console.error(e)

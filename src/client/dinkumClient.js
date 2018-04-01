@@ -86,7 +86,18 @@ console.log(url);
     return executeRequest(url, "GET")
   }
   
-
+  export function MineCoin(walletId,baseUrl) {
+    console.log(Environment)
+    let url=""
+    if(!baseUrl){
+     url = `${Environment.DinkumApiEndPoint}/api/wallets/${walletId}/minecoin`
+    }
+    else {
+       url = `${baseUrl}/api/wallets/${walletId}/minecoin`
+    }
+console.log(url);
+    return executeRequest(url, "POST")
+  }
 
 
   

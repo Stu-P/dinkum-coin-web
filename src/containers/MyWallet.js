@@ -12,6 +12,7 @@ class MyWallet extends React.Component {
     this.isWalletSelected = this.isWalletSelected.bind(this)
     this.Spinner = this.Spinner.bind(this)
     this.WalletPanel = this.WalletPanel.bind(this)
+    this.onMineAttempt = this.onMineAttempt.bind(this)
   }
   isWalletSelected() {
     return this.props.myWalletState.loaded
@@ -28,6 +29,12 @@ class MyWallet extends React.Component {
   CountCoins(){
     let coins = this.props.myWalletState.selectedWallet.Coins
     return (coins) ? coins.length:0
+  }
+
+  onMineAttempt(){
+    console.log(`attempting to mine coin`)
+    this.props.actions.MineCoin(this.props.myWalletState.selectedWallet.Id)
+
   }
 
   WalletPanel() {
@@ -49,9 +56,9 @@ class MyWallet extends React.Component {
       </div>
       <br/>
       <div>
-      <DinkumButton title='mine a coin?'/>
-   { /*<DinkumButton title='mine a coin?'/>*/ }
+        <DinkumButton title='mine a coin?' onClick={this.onMineAttempt}/>
       </div>
+      <label>{this.props.myWalletState.selectedWallet.MineResult}</label>
       </div>
   )
   }
